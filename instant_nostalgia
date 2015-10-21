@@ -17,12 +17,13 @@ import sys
 
 from docopt import docopt
 
+from lib import send_message
+
 
 def main(args):
     phone_number = _validate_phone_number(args['<phone_number>'])
     message = args['<message>']
-    print "Phone number: {}".format(phone_number)
-    print "Message: {}".format(message)
+    send_message(phone_number, message)
 
 
 def _validate_phone_number(phone_number):
