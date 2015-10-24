@@ -8,13 +8,13 @@ from settings import USER_NAME, PASSWORD, FROM_ADDRESS, SMTP_SERVER
 
 
 CARRIER_GATEWAYS = {
-    "at&t": "txt.att.net",
-    "cricket": "mms.cricketwireless.net",
-    "sprint": "pm.sprint.com",
-    "t-mobile": 'tmomail.net',
-    "u.s. cellular": "email.uscc.net",
-    "verizon": "vtext.com",
-    "virgin": "vmobl.com",
+    "at&t": "@txt.att.net",
+    "cricket": "@mms.cricketwireless.net",
+    "sprint": "@pm.sprint.com",
+    "t-mobile": "@tmomail.net",
+    "u.s. cellular": "@email.uscc.net",
+    "verizon": "@vtext.com",
+    "virgin": "@vmobl.com",
 }
 
 
