@@ -2,12 +2,13 @@
 """
 instant_nostalgia
 
-Send yourself a text message one hour from now.  Run the script as described
-below, providing a seven digit U.S. phone number (digits only) and a quoted
-message.
+Send a text message to a phone number. Run the script as described below,
+providing a seven digit U.S. phone number (digits only), the carrier it's on,
+and a quoted message.  Supported carrier names are: "at&t", "cricket",
+"sprint", "t-mobile", "u.s. cellular", "verizon", and "virgin".
 
 Usage:
-    footprinter <phone_number> <message>
+    footprinter <phone_number> <carrier_name> <message>
 
 Options:
     -h --help                   Show this screen.
@@ -21,21 +22,9 @@ from lib import send_message
 
 
 def main(args):
-    phone_number = _validate_phone_number(args['<phone_number>'])
-    message = args['<message>']
-    send_message(phone_number, message)
-
-
-def _validate_phone_number(phone_number):
-    error_message = ("Please provide your phone number as 10 digits only. (No "
-                     "punctuation, letters or spaces)")
-    if len(phone_number) != 10:
-        raise ValueError(error_message)
-    try:
-        int(phone_number)
-    except ValueError:
-        raise ValueError(error_message)
-    return phone_number
+    send_message(
+        args['<phone_number>'], args['<carrier_name>'], args['<message>'])
+    print "Message sent."
 
 
 if __name__ == '__main__':
