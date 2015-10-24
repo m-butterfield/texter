@@ -1,7 +1,7 @@
 Instant Nostalgia
 =================
 
-Text yourself a message one hour from now.
+Send text messages.
 
 ## Setup
 Requires the following environment variables to be set:
