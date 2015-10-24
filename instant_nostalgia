@@ -8,7 +8,7 @@ a quoted message.  Supported carrier names are: "at&t", "cricket", "sprint",
 "t-mobile", "u.s. cellular", "verizon", and "virgin".
 
 Usage:
-    footprinter <phone_number> <carrier_name> <message>
+    instant_nostalgia <phone_number> <carrier_name> <message>
 
 Options:
     -h --help                   Show this screen.
