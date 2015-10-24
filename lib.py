@@ -1,5 +1,5 @@
 """
-lib for instant_nostalgia
+lib for texter
 
 """
 import smtplib

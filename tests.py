@@ -1,5 +1,5 @@
 """
-Tests for instant_nostalgia
+Tests for texter
 
 """
 import mock

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-instant_nostalgia
+texter
 
 Send a text message to a phone number. Run the script as described below,
 providing a ten digit U.S. phone number (digits only), the carrier it's on, and
@@ -8,7 +8,7 @@ a quoted message.  Supported carrier names are: "at&t", "cricket", "sprint",
 "t-mobile", "u.s. cellular", "verizon", and "virgin".
 
 Usage:
-    instant_nostalgia <phone_number> <carrier_name> <message>
+    texter <phone_number> <carrier_name> <message>
 
 Options:
     -h --help                   Show this screen.
