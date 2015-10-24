@@ -1,7 +1,7 @@
-Instant Nostalgia
-=================
+Texter
+======
 
-Send text messages.
+Send text messages using [SMS gateways](https://en.wikipedia.org/wiki/SMS_gateway)
 
 ## Setup
 Requires the following environment variables to be set:
