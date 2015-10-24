@@ -12,4 +12,4 @@ Requires the following environment variables to be set:
 
 ## Example Usage
 
-    $ ./texter 1234567890 verizon "Do your homework."
+    $ ./send_message 1234567890 verizon "Do your homework."
