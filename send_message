@@ -18,7 +18,7 @@ import sys
 
 from docopt import docopt
 
-from lib import send_message
+from texter import send_message
 
 
 def main(args):

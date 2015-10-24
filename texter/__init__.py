@@ -1,5 +1,5 @@
 """
-lib for texter
+texter
 
 """
 import smtplib
