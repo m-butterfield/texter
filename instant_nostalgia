@@ -3,9 +3,9 @@
 instant_nostalgia
 
 Send a text message to a phone number. Run the script as described below,
-providing a seven digit U.S. phone number (digits only), the carrier it's on,
-and a quoted message.  Supported carrier names are: "at&t", "cricket",
-"sprint", "t-mobile", "u.s. cellular", "verizon", and "virgin".
+providing a ten digit U.S. phone number (digits only), the carrier it's on, and
+a quoted message.  Supported carrier names are: "at&t", "cricket", "sprint",
+"t-mobile", "u.s. cellular", "verizon", and "virgin".
 
 Usage:
     footprinter <phone_number> <carrier_name> <message>
