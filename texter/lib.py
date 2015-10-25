@@ -4,8 +4,6 @@ lib for texter
 """
 import smtplib
 
-from settings import USER_NAME, PASSWORD, FROM_ADDRESS, SMTP_SERVER
-
 
 CARRIER_GATEWAYS = {
     "at&t": "@txt.att.net",
@@ -17,8 +15,14 @@ CARRIER_GATEWAYS = {
     "virgin": "@vmobl.com",
 }
 
+FROM_ADDRESS = 'texter@mattbutterfield.com'
+SMTP_SERVER = 'localhost'
 
-def send_message(phone_number, carrier_name, message):
+
+def send_message(phone_number,
+                 carrier_name,
+                 message,
+                 from_address=FROM_ADDRESS):
     """
     Send a message to the given phone_number.
 
@@ -27,17 +31,17 @@ def send_message(phone_number, carrier_name, message):
         carrier_name (str): Name of the carrier the phone number is on.
         message (str): The message to send.
 
+    Kwargs:
+        from_address (str): The address the text will be sent from
+
     """
     _validate_phone_number(phone_number)
     carrier_gateway = _validate_carrier_gateway(carrier_name)
 
     to_address = phone_number + carrier_gateway
     message = '\n' + message
-    server = smtplib.SMTP(SMTP_SERVER)
-    server.starttls()
-    server.login(USER_NAME, PASSWORD)
-    server.sendmail(FROM_ADDRESS, to_address, message)
-    server.quit()
+    smtp = smtplib.SMTP(SMTP_SERVER)
+    smtp.sendmail(from_address, to_address, message)
 
 
 def _validate_phone_number(phone_number):

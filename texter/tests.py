@@ -5,8 +5,12 @@ Tests for texter
 import mock
 import unittest
 
-from texter.lib import send_message, CARRIER_GATEWAYS
-from settings import USER_NAME, PASSWORD, FROM_ADDRESS, SMTP_SERVER
+from texter.lib import (
+    CARRIER_GATEWAYS,
+    FROM_ADDRESS,
+    send_message,
+    SMTP_SERVER,
+)
 
 
 CARRIER_NAME = 'verizon'
@@ -19,14 +23,20 @@ class TestSendMessage(unittest.TestCase):
     @mock.patch("texter.lib.smtplib.SMTP")
     def test_send_message(self, server):
         send_message(PHONE_NUMBER, CARRIER_NAME, MESSAGE)
+        self._check_send_message(server)
+
+    @mock.patch("texter.lib.smtplib.SMTP")
+    def test_specify_from_address(self, server):
+        new_from_address = 'bob@aol.com'
+        send_message(PHONE_NUMBER, CARRIER_NAME, MESSAGE, new_from_address)
+        self._check_send_message(server, new_from_address)
+
+    def _check_send_message(self, server, from_address=FROM_ADDRESS):
         expected_message = '\n' + MESSAGE
         to_email = PHONE_NUMBER + CARRIER_GATEWAYS[CARRIER_NAME]
         calls = [
             mock.call(SMTP_SERVER),
-            mock.call().starttls(),
-            mock.call().login(USER_NAME, PASSWORD),
-            mock.call().sendmail(FROM_ADDRESS, to_email, expected_message),
-            mock.call().quit()
+            mock.call().sendmail(from_address, to_email, expected_message),
         ]
         self.assertTrue(server.mock_calls == calls)
 
