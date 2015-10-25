@@ -1,8 +1,5 @@
 from distutils.core import setup
-from pip.req import parse_requirements
 
-
-requirements = [str(ir.req) for ir in parse_requirements('requirements.txt')]
 
 setup(
     name='texter',
@@ -14,5 +11,5 @@ setup(
     url='https://github.com/m-butterfield/texter',
     download_url='https://github.com/m-butterfield/texter/tarball/0.2',
     keywords=['sms', 'text', 'texting'],
-    install_requires=requirements,
+    install_requires=['docopt==0.6.2', 'mock==1.3.0'],
 )
