@@ -5,7 +5,7 @@ Tests for texter
 import mock
 import unittest
 
-from texter import send_message, CARRIER_GATEWAYS
+from texter.lib import send_message, CARRIER_GATEWAYS
 from settings import USER_NAME, PASSWORD, FROM_ADDRESS, SMTP_SERVER
 
 
@@ -16,7 +16,7 @@ MESSAGE = 'hello'
 
 class TestSendMessage(unittest.TestCase):
 
-    @mock.patch("texter.smtplib.SMTP")
+    @mock.patch("texter.lib.smtplib.SMTP")
     def test_send_message(self, server):
         send_message(PHONE_NUMBER, CARRIER_NAME, MESSAGE)
         expected_message = '\n' + MESSAGE
