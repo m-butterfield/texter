@@ -7,9 +7,10 @@ import unittest
 
 from texter.lib import (
     CARRIER_GATEWAYS,
-    FROM_ADDRESS,
+    GMAIL_EMAIL,
+    GMAIL_PASSWORD,
+    GMAIL_SMTP_SERVER,
     send_message,
-    SMTP_SERVER,
 )
 
 
@@ -23,20 +24,14 @@ class TestSendMessage(unittest.TestCase):
     @mock.patch("texter.lib.smtplib.SMTP")
     def test_send_message(self, server):
         send_message(PHONE_NUMBER, CARRIER_NAME, MESSAGE)
-        self._check_send_message(server)
-
-    @mock.patch("texter.lib.smtplib.SMTP")
-    def test_specify_from_address(self, server):
-        new_from_address = 'bob@aol.com'
-        send_message(PHONE_NUMBER, CARRIER_NAME, MESSAGE, new_from_address)
-        self._check_send_message(server, new_from_address)
-
-    def _check_send_message(self, server, from_address=FROM_ADDRESS):
         expected_message = '\n' + MESSAGE
         to_email = PHONE_NUMBER + CARRIER_GATEWAYS[CARRIER_NAME]
         calls = [
-            mock.call(SMTP_SERVER),
-            mock.call().sendmail(from_address, to_email, expected_message),
+            mock.call(GMAIL_SMTP_SERVER),
+            mock.call().starttls(),
+            mock.call().login(GMAIL_EMAIL, GMAIL_PASSWORD),
+            mock.call().sendmail(GMAIL_EMAIL, to_email, expected_message),
+            mock.call().quit()
         ]
         self.assertTrue(server.mock_calls == calls)
 

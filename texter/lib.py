@@ -2,6 +2,7 @@
 lib for texter
 
 """
+import os
 import smtplib
 
 
@@ -15,14 +16,12 @@ CARRIER_GATEWAYS = {
     "virgin": "@vmobl.com",
 }
 
-FROM_ADDRESS = 'texter@mattbutterfield.com'
-SMTP_SERVER = 'localhost'
+GMAIL_SMTP_SERVER = 'smtp.gmail.com:587'
+GMAIL_EMAIL = os.getenv('GMAIL_EMAIL')
+GMAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
 
 
-def send_message(phone_number,
-                 carrier_name,
-                 message,
-                 from_address=FROM_ADDRESS):
+def send_message(phone_number, carrier_name, message):
     """
     Send a message to the given phone_number.
 
@@ -31,17 +30,17 @@ def send_message(phone_number,
         carrier_name (str): Name of the carrier the phone number is on.
         message (str): The message to send.
 
-    Kwargs:
-        from_address (str): The address the text will be sent from
-
     """
     _validate_phone_number(phone_number)
     carrier_gateway = _validate_carrier_gateway(carrier_name)
 
     to_address = phone_number + carrier_gateway
     message = '\n' + message
-    smtp = smtplib.SMTP(SMTP_SERVER)
-    smtp.sendmail(from_address, to_address, message)
+    smtp = smtplib.SMTP(GMAIL_SMTP_SERVER)
+    smtp.starttls()
+    smtp.login(GMAIL_EMAIL, GMAIL_PASSWORD)
+    smtp.sendmail(GMAIL_EMAIL, to_address, message)
+    smtp.quit()
 
 
 def _validate_phone_number(phone_number):

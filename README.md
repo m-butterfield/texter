@@ -1,13 +1,18 @@
 Texter
 ======
 
-Send text messages using [SMS gateways](https://en.wikipedia.org/wiki/SMS_gateway)
+Send text messages using your Gmail account and [SMS gateways](https://en.wikipedia.org/wiki/SMS_gateway)
 
 ## Setup
 
-First, you must have a mail server such as [Postfix](http://www.postfix.org/) installed and running on localhost.  Then, install this package with pip:
+First, install this package with pip:
 
     $ pip install texter
+
+Then, set some environment variables so texter can send mail from your Gmail account:
+
+    $ export GMAIL_EMAIL=<email>
+    $ export GMAIL_PASSWORD=<password>
 
 ## Usage
 
