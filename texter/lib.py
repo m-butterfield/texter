@@ -33,9 +33,12 @@ def send_message(phone_number, carrier_name, message):
     """
     _validate_phone_number(phone_number)
     carrier_gateway = _validate_carrier_gateway(carrier_name)
-
     to_address = phone_number + carrier_gateway
     message = '\n' + message
+    _send_message(to_address, message)
+
+
+def _send_message(to_address, message):
     smtp = smtplib.SMTP(GMAIL_SMTP_SERVER)
     smtp.starttls()
     smtp.login(GMAIL_EMAIL, GMAIL_PASSWORD)

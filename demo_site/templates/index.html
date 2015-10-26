@@ -18,14 +18,16 @@
         <div class="container-fluid text-center" id="texter-content">
             <div class="row">
                 <div class="col-xs-2 col-xs-offset-5">
-                    <form>
+                    <div id="alert-message"></div>
+                    <form id="texter-form">
                         <div class="form-group">
-                            <label>Phone Number:</label>
-                            <input class="form-control" name="phone-number" placeholder="Phone Number" />
+                            <label>Phone Number (Digits Only):</label>
+                            <input class="form-control" required="required" name="phone_number" placeholder="Phone Number" />
                         </div>
                         <div class="form-group">
                             <label>Carrier:</label>
-                            <select class="form-control" name="carrier">
+                            <select class="form-control" name="carrier_name" required="required">
+                                <option></option>
                                 <option value="at&t">AT&T</option>
                                 <option value="cricket">Cricket</option>
                                 <option value="sprint">Sprint</option>
@@ -37,13 +39,26 @@
                         </div>
                         <div class="form-group">
                             <label>Message:</label>
-                            <input class="form-control" name="message" />
+                            <input required="required" class="form-control" name="message" />
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>
+                <div class="row">
+                    <div class="col-xs-2 col-xs-offset-5">
+                        <div id="" class="row">
+                            <p><a href="https://github.com/m-butterfield/texter">Source code.</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <script type="text/template" id="alert-template">
+            <div class="alert alert-<%= type %>" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span><%= message %></span>
+            </div>
+        </script>
         <script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery/dist/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='vendor/underscore/underscore-min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='vendor/backbone/backbone-min.js') }}"></script>
