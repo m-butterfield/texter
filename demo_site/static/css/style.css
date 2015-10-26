@@ -1,0 +1,24 @@
+body {
+    background-color: #fafafa;
+    color: #4A4A4A;
+    min-width: 640px;
+}
+.navbar {
+    border-radius: 0;
+    background-color: white;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-default .navbar-brand {
+    float: none;
+    color: #4A4A4A;
+    position: relative;
+    z-index: 10;
+}
+#texter-form {
+    margin-bottom: 20px;
+}
