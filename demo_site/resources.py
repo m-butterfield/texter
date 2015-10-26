@@ -16,7 +16,7 @@ class TextResource(Resource):
     def post(self):
         try:
             send_message(**request.get_json())
-        except ValueError as ex:
+        except Exception as ex:
             response = jsonify({'message': ex.message})
             response.status_code = 400
             return response
