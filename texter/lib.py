@@ -31,9 +31,9 @@ def send_message(phone_number, carrier_name, message):
         message (str): The message to send.
 
     """
-    _validate_phone_number(phone_number)
-    carrier_gateway = _validate_carrier_gateway(carrier_name)
-    to_address = phone_number + carrier_gateway
+    validate_phone_number(phone_number)
+    validate_carrier_name(carrier_name)
+    to_address = phone_number + CARRIER_GATEWAYS[carrier_name]
     message = '\n' + message
     _send_message(to_address, message)
 
@@ -46,7 +46,7 @@ def _send_message(to_address, message):
     smtp.quit()
 
 
-def _validate_phone_number(phone_number):
+def validate_phone_number(phone_number):
     error_message = ("Please provide your phone number as 10 digits only. (No "
                      "punctuation, letters or spaces)")
     if len(phone_number) != 10:
@@ -57,9 +57,8 @@ def _validate_phone_number(phone_number):
         raise ValueError(error_message)
 
 
-def _validate_carrier_gateway(carrier_name):
+def validate_carrier_name(carrier_name):
     if carrier_name not in CARRIER_GATEWAYS:
         carrier_names = ', '.join(CARRIER_GATEWAYS.keys())
         raise ValueError(
             "Invalid carrier name.  Valid carrier names are: " + carrier_names)
-    return CARRIER_GATEWAYS[carrier_name]

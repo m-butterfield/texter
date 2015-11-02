@@ -11,6 +11,8 @@ from texter.lib import (
     GMAIL_PASSWORD,
     GMAIL_SMTP_SERVER,
     send_message,
+    validate_carrier_name,
+    validate_phone_number,
 )
 
 
@@ -31,16 +33,16 @@ class TestSendMessage(unittest.TestCase):
             mock.call().starttls(),
             mock.call().login(GMAIL_EMAIL, GMAIL_PASSWORD),
             mock.call().sendmail(GMAIL_EMAIL, to_email, expected_message),
-            mock.call().quit()
+            mock.call().quit(),
         ]
         self.assertTrue(server.mock_calls == calls)
 
-    def test_invalid_phone_numbers(self):
-        self.assertRaises(
-            ValueError, send_message, '123', CARRIER_NAME, MESSAGE)
-        self.assertRaises(
-            ValueError, send_message, 'tenletters', CARRIER_NAME, MESSAGE)
 
-    def test_invalid_carrier_name(self):
-        self.assertRaises(
-            ValueError, send_message, PHONE_NUMBER, 'blah', MESSAGE)
+class TestValidateFunctions(unittest.TestCase):
+
+    def test_validate_phone_number(self):
+        self.assertRaises(ValueError, validate_phone_number, '123')
+        self.assertRaises(ValueError, validate_phone_number, 'tenletters')
+
+    def test_validate_carrier_name(self):
+        self.assertRaises(ValueError, validate_carrier_name, 'blah')
