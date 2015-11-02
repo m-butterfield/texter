@@ -4,7 +4,7 @@ Views for the application
 """
 from flask import render_template
 
-from demo_site import app
+from app import app
 
 
 @app.route('/')

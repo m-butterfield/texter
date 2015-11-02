@@ -7,7 +7,7 @@ api = Api(app)
 
 
 from resources import TextResource
-from demo_site.views import index
+from app.views import index
 
 
 api.add_resource(TextResource, '/api/text')
