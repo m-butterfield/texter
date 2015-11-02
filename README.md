@@ -26,7 +26,7 @@ send_message('1234567890', 'verizon', 'Hello from texter.')
 
 There is also a standalone script you can use:
 
-    $ ./send_message 1234567890 verizon "Hello from texter."
+    $ bin/send_message 1234567890 verizon "Hello from texter."
 
 ## Demo site:
 
