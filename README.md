@@ -34,8 +34,9 @@ To start your own version of the web site:
 
 ### Set up environment:
 
-Install [node](https://nodejs.org/en/) and [postgresql](http://www.postgresql.org/), then create the database and set the uri environment variable:
+Install [node](https://nodejs.org/en/) and [postgresql](http://www.postgresql.org/), then install the required python packages, create the database and set the uri environment variable:
 
+    $ pip install -r app_requirements.txt
     $ createdb texter
     $ export DATABASE_URI=postgresql://localhost/texter
     
