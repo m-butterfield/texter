@@ -28,11 +28,20 @@ There is also a standalone script you can use:
 
     $ bin/send_message 1234567890 verizon "Hello from texter."
 
-## Demo site:
+## Web site:
 
-To start your own version of the demo site (requires [node](https://nodejs.org/en/)):
+To start your own version of the web site:
 
-    $ cd demo_site/static/
+### Set up environment:
+
+Install [node](https://nodejs.org/en/) and [postgresql](http://www.postgresql.org/), then create the database and set the uri environment variable:
+
+    $ createdb texter
+    $ export DATABASE_URI=postgresql://localhost/texter
+    
+Download static dependencies and start the app:
+
+    $ cd app/static/
     $ npm install
     $ cd ../../
-    $ python demo_site.py
+    $ python run_app.py
