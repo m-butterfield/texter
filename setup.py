@@ -14,7 +14,7 @@ setup(
     install_requires=[
         'docopt==0.6.2',
         'mock==1.3.0',
-        'Flask==0.10.1',
+        'Flask==1.0',
         'Flask-RESTful==0.3.4',
     ],
 )
